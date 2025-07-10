@@ -8,7 +8,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add items with different priorities and verify highest priority is dequeued first
     // Expected Result: "High" (priority 3), "Medium" (priority 2), "Low" (priority 1)
-    // Defect(s) Found: 
+    // Defect(s) Found: Loop in Dequeue was not checking all items (missed last item), and item wasn't being removed from queue. 
     public void TestPriorityQueue_1()
     {
         var priorityQueue = new PriorityQueue();
@@ -24,7 +24,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add multiple items with same priority and verify FIFO order for equal priorities
     // Expected Result: "First" should come before "Second" when both have same priority
-    // Defect(s) Found: 
+    // Defect(s) Found: Priority comparison used >= instead of >, breaking FIFO order for equal priorities. 
     public void TestPriorityQueue_2()
     {
         var priorityQueue = new PriorityQueue();
@@ -42,7 +42,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Try to dequeue from empty queue
     // Expected Result: Should throw InvalidOperationException
-    // Defect(s) Found: 
+    // Defect(s) Found: No defects - this test was to verify proper exception handling was implemented. 
     public void TestPriorityQueue_EmptyQueue()
     {
         var priorityQueue = new PriorityQueue();
@@ -52,7 +52,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add single item and dequeue it
     // Expected Result: Should return the single item
-    // Defect(s) Found: 
+    // Defect(s) Found: No defects - this test was to verify basic functionality works correctly. 
     public void TestPriorityQueue_SingleItem()
     {
         var priorityQueue = new PriorityQueue();
@@ -63,7 +63,7 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Complex scenario with multiple priorities and FIFO within same priority
     // Expected Result: Items should come out in priority order, FIFO within same priority
-    // Defect(s) Found: 
+    // Defect(s) Found: Same defects as earlier tests - loop bounds and priority comparison logic were incorrect. 
     public void TestPriorityQueue_ComplexScenario()
     {
         var priorityQueue = new PriorityQueue();
